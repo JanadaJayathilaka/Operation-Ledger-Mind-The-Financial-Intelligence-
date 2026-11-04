@@ -11,12 +11,13 @@ from typing import Dict, Any
 # LangChain LLM Factory
 # ============================================================================
 
-def get_llm(config: Dict[str, Any]):
+def get_llm(config: Dict[str, Any], **kwargs):
     """
     Return a LangChain-compatible chat model based on config.
     
     Args:
         config: Configuration dictionary with llm_provider, llm_model, etc.
+        **kwargs: Optional parameter overrides (e.g. temperature=0.3, max_tokens=1024)
         
     Returns:
         LangChain chat model instance
@@ -24,6 +25,9 @@ def get_llm(config: Dict[str, Any]):
     Raises:
         ValueError: If provider is unknown
     """
+    if kwargs:
+        config = {**config, **kwargs}
+        
     provider = config["llm_provider"]
     
     if provider == "openai":
