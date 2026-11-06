@@ -63,6 +63,8 @@ dependencies = [
     "langgraph>=1.0.1",
     "dotenv>=0.9.9",
     "langchain-openrouter>=0.2.9",
+    "datasets>=5.1.0",
+    "huggingface-hub>=2.4.0",
 ]
 
 [project.optional-dependencies]
